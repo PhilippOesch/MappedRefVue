@@ -4,7 +4,13 @@ This Library implements a mapped reference type. This may be very useful when yo
 
 ## Usage
 
-First you have to define the reference which for example represents the state that you want to map from.
+First install the package through any package manager you like:
+
+```bash
+npm i mappedref-vue
+```
+
+Next, you have to define the reference which for example represents the state that you want to map from.
 
 Don't forget the imports at the top:
 
