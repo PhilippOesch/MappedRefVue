@@ -19,8 +19,13 @@
         "utility",
         "library",
         "plugin",
-        "reactivity"
+        "reactivity",
+        "vue3"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PhilippOesch/MappedRefVue.git"
+    },
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && vite build",
