@@ -14,7 +14,7 @@
         "esModuleInterop": true,
         "isolatedModules": false,
         "declaration": true,
-        // "downlevelIteration": true,
+        "downlevelIteration": true,
         //"noEmit": true,
         "jsx": "preserve",
         "baseUrl": ".",
