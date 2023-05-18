@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mappedRef, MappedRefType } from 'mappedref-vue';
+import { mappedRef, MappedRefType } from './index';
 import { ref } from 'vue';
 
 const a = ref(0);
