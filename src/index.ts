@@ -1,3 +1,3 @@
-import { mappedRef, MappedRefType } from '@/utils/';
+import { mappedRef, MappedRefType } from '@/utils/mappedRef';
 
 export { mappedRef, MappedRefType };
