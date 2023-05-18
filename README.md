@@ -1,30 +1,26 @@
 # MappedRef-Vue
 
-This Library implements a mapped reference type. This may be very usefull when you have multiple states and want to map between different display logics for your UI.
+This Library implements a mapped reference type. This may be very useful when you have multiple states and want to map between different display logics for your UI.
 
 ## Usage
 
 First you have to define the reference which for example represents the state that you want to map from.
 
-```ts
-const state = ref();
-```
-
-Dont forget the import at the top:
+Don't forget the imports at the top:
 
 ```ts
 import {mappedRef, MappedRefType } from 'mappedref-vue'
 ...
 ```
 
-Then you can define your Mapping Logic. Let's imagine a small calculator. We have two input, *a* and *b*. Let's create references for these two inputs 
+Let's imagine a small calculator. We have two input, *a* and *b*. Let's create references for these two inputs.
 
 ```ts
 const a = ref(0);
 const b = ref(0);
 ```
 
-Next we create the two inputs within the template
+Next we create the two inputs within the template.
 ```html
 <template>
    ...
@@ -34,31 +30,30 @@ Next we create the two inputs within the template
 </template>
 ```
 
-Now we create the mapped referenc and provide the state referenc for the mapping. Also we create the Mappings themself.
+Now we create the mapped reference and provide a default for when the mapping does not match. Also, we create the mapping logic itself.
 
 ```ts
 // initialize
-const mappedReference: MappedRefType<string, string> = mappedRef(
-    'Nothing Calculated',
-    stateRef
+const calculatorMapping: MappedRefType<string, string> = mappedRef(
+    'Nothing Calculated'
 );
 
 // create Mappings
-mappedReference.set(
+calculatorMapping.set(
     'Add',
     () => `${a.value} + ${b.value} = ${a.value + b.value}`
 );
-mappedReference.set(
+calculatorMapping.set(
     'Subtract',
     () => `${a.value} - ${b.value} = ${a.value - b.value}`
 );
-mappedReference.set(
+calculatorMapping.set(
     'Multiply',
     () => `${a.value} * ${b.value} = ${a.value * b.value}`
 );
 ```
 
-Let's extend our template with button to switch between the calculation methods. Additionally we add the actual display of the result.
+Let's extend our template with buttons to switch between the calculation methods. Additionally, we add the actual display of the result.
 
 ```html
 <template>
@@ -66,12 +61,26 @@ Let's extend our template with button to switch between the calculation methods.
     <input v-model="a" type="number" placeholder="0" />
     <input v-model="b" type="number" placeholder="0" />
     <!-- New Buttons for switching -->
-    <Button @click="stateRef = 'Add'">Add</Button>
-    <Button @click="stateRef = 'Subtract'">Subtract</Button>
-    <Button @click="stateRef = 'Multiply'">Multiply</Button>
+    <Button @click="calculatorMapping.keyRef = 'Add'">Add</Button>
+    <Button @click="calculatorMapping.keyRef = 'Subtract'">Subtract</Button>
+    <Button @click="calculatorMapping.keyRef = 'Multiply'">Multiply</Button>
     <!-- Result Display -->
     <h2>Result:</h2>
-    <div>{{ mappedReference.valueRef }}</div>
+    <div>{{ calculatorMapping.valueRef }}</div>
 </template>
+```
+
+## Other features
+
+The *mappedRef* call will automatically create a reference for the key. Which can be set over the *keyRef* - Attribute. When you for example want to chain multiple different mappings to a single key-Reference, you can also define the reference outside the *mappedRef* call and then provide it as a parameter:
+
+```ts
+...
+const calculationType = ref('Add')
+const calculatorMapping: MappedRefType<string, string> = mappedRef(
+    'Nothing Calculated',
+    calculationType
+);
+...
 ```
 

@@ -7,7 +7,7 @@ interface MappedRefType<TypeKey, TypeValue> {
     /**
      * The Key value
      */
-    key: TypeKey | undefined;
+    keyRef: TypeKey | undefined;
     /**
      * The actual reference
      */
@@ -48,7 +48,7 @@ function mappedRef<TypeKey, TypeValue>(
     }
 
     return reactive({
-        key: reference,
+        keyRef: reference,
         valueRef: mappedValue,
         set: (key: TypeKey, value: () => TypeValue) => refMap.set(key, value),
     });
