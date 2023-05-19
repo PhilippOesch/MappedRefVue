@@ -17,7 +17,7 @@
         "downlevelIteration": true,
         "jsx": "preserve",
         "baseUrl": ".",
-        "declarationDir": "./dist/dts",
+        "declarationDir": "dist/dts",
         "emitDeclarationOnly": true,
         "allowSyntheticDefaultImports": false,
         /* Linting */
@@ -29,6 +29,5 @@
         "noImplicitAny": false
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-    "references": [{ "path": "./tsconfig.node.json" }],
-    "exclude": ["src/main.ts", "src/App.vue"]
+    "references": [{ "path": "./tsconfig.node.json" }]
 }
