@@ -1,25 +1,5 @@
-import { ComputedRef, Ref, computed, reactive, ref } from 'vue';
-
-/**
- * A Mapped Reference Type
- */
-interface MappedRefType<TypeKey, TypeValue> {
-    /**
-     * The Key value
-     */
-    keyRef: TypeKey | undefined;
-    /**
-     * The actual reference
-     */
-    valueRef: ComputedRef<any>;
-
-    /**
-     * Register a mapping
-     * @param key The key
-     * @param value The value to map to
-     */
-    set: (key: TypeKey, value: () => TypeValue) => void;
-}
+import { Ref, computed, reactive, ref } from 'vue';
+import type MappedRefType from './MappedRefType';
 
 /**
  * create a mapped reference
@@ -27,7 +7,7 @@ interface MappedRefType<TypeKey, TypeValue> {
  * @param reference The reference to use as key
  * @returns A MappedRefType
  */
-function mappedRef<TypeKey, TypeValue>(
+export default function mappedRef<TypeKey, TypeValue>(
     defaultReturn: any,
     reference: Ref<TypeKey | undefined> = ref(undefined)
 ): MappedRefType<TypeKey, TypeValue> {
@@ -53,5 +33,3 @@ function mappedRef<TypeKey, TypeValue>(
         set: (key: TypeKey, value: () => TypeValue) => refMap.set(key, value),
     });
 }
-
-export { mappedRef, MappedRefType };

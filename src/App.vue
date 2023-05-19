@@ -6,8 +6,10 @@ const a = ref(0);
 const b = ref(0);
 
 // initialize
-const calculatorMapping: MappedRefType<string, string> =
-    mappedRef('Nothing Calculated');
+const calculatorMapping: MappedRefType<string, string> = mappedRef(
+    'Nothing Calculated',
+    ref()
+);
 
 // create Mappings
 calculatorMapping.set(

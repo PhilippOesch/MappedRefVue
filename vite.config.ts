@@ -1,26 +1,10 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import typescript2 from 'rollup-plugin-typescript2';
 import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [
-        vue(),
-        typescript2({
-            check: false,
-            include: ['src/**/*.ts'],
-            tsconfigOverride: {
-                compilerOptions: {
-                    sourceMap: true,
-                    declaration: true,
-                    declarationMap: true,
-                },
-            },
-            //useTsconfigDeclarationDir: true,
-            exclude: ['vite.config.ts', 'src/main.ts', 'src/**/*.test.ts'],
-        }),
-    ],
+    plugins: [vue()],
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
