@@ -8,7 +8,7 @@ import type MappedRefType from './MappedRefType';
  * @returns A MappedRefType
  */
 export default function mappedRef<TypeKey, TypeValue>(
-    defaultReturn: any,
+    defaultReturn: TypeValue,
     reference: Ref<TypeKey | undefined> = ref(undefined)
 ): MappedRefType<TypeKey, TypeValue> {
     const refMap: Map<TypeKey, () => TypeValue> = new Map();
@@ -20,14 +20,14 @@ export default function mappedRef<TypeKey, TypeValue>(
      * @param key The key to map
      * @returns
      */
-    function mapToRef(key: TypeKey | undefined) {
+    function mapToRef(key: TypeKey | undefined): TypeValue {
         if (key !== undefined && refMap.has(key)) {
             return refMap.get(key)!();
         }
         return defaultReturn;
     }
 
-    return reactive({
+    return <MappedRefType<TypeKey, TypeValue>>reactive({
         keyRef: reference,
         valueRef: mappedValue,
         set: (key: TypeKey, value: () => TypeValue) => refMap.set(key, value),

@@ -11,7 +11,7 @@ interface MappedRefType<TypeKey, TypeValue> {
     /**
      * The actual reference
      */
-    valueRef: ComputedRef<any>;
+    valueRef: ComputedRef<TypeValue>;
 
     /**
      * Register a mapping
