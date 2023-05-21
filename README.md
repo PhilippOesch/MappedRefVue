@@ -19,14 +19,14 @@ import {mappedRef} from 'mappedref-vue'
 ...
 ```
 
-Let's imagine a small calculator. We have two input, *a* and *b*. Let's create references for these two inputs.
+Let's imagine a small calculator. We have two inputs, *a* and *b*. Let's create references for these two inputs.
 
 ```ts
 const a = ref(0);
 const b = ref(0);
 ```
 
-Next we create the two inputs within the template.
+Next, we create the two inputs within the template.
 ```html
 <template>
    ...
@@ -83,7 +83,7 @@ The *mappedRef* call will automatically create a reference for the key. Which ca
 ```ts
 ...
 const calculationType = ref('Add')
-const calculatorMapping: MappedRefType<string, string> = mappedRef(
+const calculatorMapping = mappedRef(
     'Nothing Calculated',
     calculationType
 );
