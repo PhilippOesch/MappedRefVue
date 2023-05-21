@@ -15,7 +15,7 @@ Next, you have to define the reference which for example represents the state th
 Don't forget the imports at the top:
 
 ```ts
-import {mappedRef, MappedRefType } from 'mappedref-vue'
+import {mappedRef} from 'mappedref-vue'
 ...
 ```
 
@@ -40,7 +40,7 @@ Now we create the mapped reference and provide a default for when the mapping do
 
 ```ts
 // initialize
-const calculatorMapping: MappedRefType<string, string> = mappedRef(
+const calculatorMapping = mappedRef<string, string>(
     'Nothing Calculated'
 );
 
